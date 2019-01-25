@@ -37,6 +37,10 @@ class Test1(unittest.TestCase):
         max = 0
         self.assertEqual(min, 0)
         self.assertEqual(max, 0)
+       
+    def test_average(self):
+        average = temp/1
+        self.assertEqual(average, 1)
     
             
 if __name__== '__main__':
