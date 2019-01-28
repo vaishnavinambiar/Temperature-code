@@ -4,16 +4,16 @@ year = int(raw_input("Enter the year "))
 month = int(raw_input("Enter the month "))
 day = int(raw_input("Enter the day "))
 date = datetime.date(year, month, day)
-date_2 = datetime.date(year, month, day)
-temp=input("Enter the temperatures: ")
 result=input("Type C for convert to Celsius and F for Fahrenheit:")
 my_dict = {}
+temperatures = []
 
-def temperature():
+def main():
     """ This function enters the temperatures and converts to farehneit or celcius. """
     for temp in range(3):
         temp=input("Enter the temperatures: ")
         temp=float(temp)
+        get_user_temperature_input(temp)
         
         if result == 'C':
             convert= (9*temp+32*5)/5
@@ -24,28 +24,21 @@ def temperature():
         else:
             print("Please insert correct syntax")
 
-def user_input():
+
+def get_user_temperature_input(temp):
     """ Intakes the user's temperature values and stores as in dict."""
-    temperatures = []
+    
     temperatures.append(temp)
-    my_dict = {}
     key = date
     my_dict.setdefault(date,[])
     my_dict[date].append(temperatures)
     my_dict[date] = [temperatures]
     return my_dict
 
-def user_date():
-    """ Intakes the user's date values."""
-    year = int(raw_input("Enter the year "))
-    month = int(raw_input("Enter the month "))
-    day = int(raw_input("Enter the day "))
-    date_2 = datetime.date(year, month, day)
-    return date_2
-        
-        
-def display_temp():
+
+def get_min_max():
     """ Displays the minimum and maximum temperature from the user's dates as per the choice given."""
+    
     choice_list=[1,2]
     for user_input in range(2):
         user_input=int(input("enter your choice:"))
@@ -54,13 +47,18 @@ def display_temp():
         elif(user_input==choice_list[1]):
             print min(my_dict[date][0])
 
+def get_average():
+    average = (temperatures[0]+ temperatures[1]+temperatures[2])/3
+    print ("Average is %d" %average)
     
         
+if __name__ == "__main__":
+    
+    main()
+    
+    get_min_max()
+    get_average()
 
-temperature()
-user_input()
-user_date()
-display_temp()
 
     
 
