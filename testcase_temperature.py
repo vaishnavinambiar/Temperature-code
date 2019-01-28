@@ -1,43 +1,27 @@
 import unittest
-import datetime
+from temperature import *
 
-year = int(raw_input("Enter the year "))
-month = int(raw_input("Enter the month "))
-day = int(raw_input("Enter the day "))
-date = datetime.date(year, month, day)
-temp=input("Enter the temperatures: ")
-result=input("Type C for convert to Celsius and F for Fahrenheit:")
-temperatures = []
-my_dict = {}
 
-class Test1(unittest.TestCase):
+temp=input("Enter the temperatures")
+class MyTestCase(unittest.TestCase):
     def test_main(self):
+        self.temp = main()
+        self.assertEqual(temp,32)
+    def test_get_user_temperature_input(self):
+        self.my_dict = get_user_temperature_input(temp)
+        self.assertEqual(my_dict, {datetime.date(2015, 5, 6): [[32]]})
+    def test_get_min_max(self):
+        self.choice_list[0]= get_min_max()
+        self.assertEqual(max({datetime.date(2015, 5, 6): [[0]]}, 32))
+    def test_get_average(self):
+        self.average= average()
+        self.assertEqual(average, 32)
+
+
+       
+
         
-        if result == 'C':
-            convert= (9*temp+32*5)/5
-            print("F= ", convert)
-        elif result == 'F':
-            convert = (5 * temp - 32 * 5) / 9
-            print("C= ", convert)
-            self.assertEqual(convert, 0.0)
-            
-
-    def test_user_input(temp):
-         temperatures.append(temp)
-         key = date
-         my_dict.setdefault(date,[])
-         my_dict[date].append(temperatures)
-         my_dict[date] = [temperatures]
-         return my_dict
-         self.assertEqual(temp, 1.0)
-
-      
-    def test_min_max(self):
-        min = 0
-        max = 0
-        self.assertEqual(min, 0)
-        self.assertEqual(max, 0)
     
-            
-if __name__== '__main__':
-    unittest.main()
+if __name__ == '__main__':
+    unittest.main()        
+    
