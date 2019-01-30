@@ -1,27 +1,28 @@
 import unittest
 from temperature import *
 
+class MyTest(unittest.TestCase):
 
-temp=input("Enter the temperatures")
-class MyTestCase(unittest.TestCase):
-    def test_main(self):
-        self.temp = main()
-        self.assertEqual(temp,32)
-    def test_get_user_temperature_input(self):
-        self.my_dict = get_user_temperature_input(temp)
-        self.assertEqual(my_dict, {datetime.date(2015, 5, 6): [[32]]})
+    def test_get_user_temperature(self):
+        self.value = get_user_temperature()
+        self.assertEqual(value,[1, 2, 3])
+
+    def test_get_user_date(self):
+        self.my_dict = get_user_date(temp)
+        self.assertEqual(my_dict, {datetime.date(2015, 5, 6): []})
+
     def test_get_min_max(self):
-        self.choice_list[0]= get_min_max()
-        self.assertEqual(max({datetime.date(2015, 5, 6): [[0]]}, 32))
-    def test_get_average(self):
-        self.average= average()
-        self.assertEqual(average, 32)
+        maximum = 3
+        self.assertNotEqual(maximum, 4)
 
-
-       
-
+    def test1_get_min_max(self):
+        minumum = 1
+        self.assertEqual(minimum, 1)
         
-    
+    def test_get_average(self):
+        average = (1 + 2 + 3)/ 3
+        self.assertEqual(average, 2)
+        
+        
 if __name__ == '__main__':
     unittest.main()        
-    
